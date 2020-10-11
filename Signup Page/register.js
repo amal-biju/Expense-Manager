@@ -2,9 +2,12 @@ window.addEventListener('load', function () {
     var form = document.querySelector('form')
     form.addEventListener('submit', register)
 })
+
 var array = []
 
 function register() {
+    const anchor = document.querySelector('a');
+    anchor.classList.remove("hide")
 
     event.preventDefault()
     var form = new FormData(event.target);
@@ -20,14 +23,14 @@ function register() {
         password: password
     }
     // console.log(payload);
-    var get = JSON.parse(localStorage.getItem('users'));
+    array = JSON.parse(localStorage.getItem('users'));
 
     var match = true;
 
-    if (get != null) {
-        console.log(get);
-        for (var i = 0; i < get.length; i++) {
-            if (email == get[i].email) {
+    if (array != null) {
+        // console.log(array);
+        for (var i = 0; i < array.length; i++) {
+            if (email == array[i].email) {
                 registerNotAllowed()
                 match = false
             }
@@ -35,6 +38,9 @@ function register() {
     }
 
     if (match) {
+        var status = document.getElementById("status")
+        status.innerText = "Registration Successful"
+
         array.push(payload);
         // console.log(array);
         localStorage.setItem("users", JSON.stringify(array))
@@ -42,9 +48,6 @@ function register() {
 
 }
 function registerNotAllowed() {
-    // var div = document.createElement('div');
-    var p = document.createElement('p');
-    p.innerHTML = "Account Aleady Exists"
-    // div.appendChild(p)
-    document.body.append(p);
+    var status = document.getElementById("status")
+    status.innerText = "User Already Exists"
 }
