@@ -42,6 +42,7 @@ function register() {
 
 }
 function registerNotAllowed() {
+
     // var div = document.createElement('div');
     var p = document.createElement('p');
     p.innerHTML = "Account Aleady Exists"
