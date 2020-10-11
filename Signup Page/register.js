@@ -1,10 +1,10 @@
-window.addEventListener('load',function(){
+window.addEventListener('load', function () {
     var form = document.querySelector('form')
-    form.addEventListener('submit',register)
+    form.addEventListener('submit', register)
 })
 var array = []
 
-function register(){
+function register() {
 
     event.preventDefault()
     var form = new FormData(event.target);
@@ -20,22 +20,28 @@ function register(){
         password: password
     }
     // console.log(payload);
-    array.push(payload);
-    console.log(array);
-    localStorage.setItem("Users", JSON.stringify(array))
+    var get = JSON.parse(localStorage.getItem('users'));
 
-    var get = JSON.parse(localStorage.getItem('Users'));
-    console.log(get);
+    var match = true;
 
-    for(var i=0;i<get.length;i++){
-        if(email==get[i].email){
-           registerNotAllowed()
-        }else{
-            
+    if (get != null) {
+        console.log(get);
+        for (var i = 0; i < get.length; i++) {
+            if (email == get[i].email) {
+                registerNotAllowed()
+                match = false
+            }
         }
     }
+
+    if (match) {
+        array.push(payload);
+        // console.log(array);
+        localStorage.setItem("users", JSON.stringify(array))
+    }
+
 }
-function registerNotAllowed(){
+function registerNotAllowed() {
     // var div = document.createElement('div');
     var p = document.createElement('p');
     p.innerHTML = "Account Aleady Exists"
