@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dash.css" />
+  </head>
+  <body>
+    <button>Sign out</button>
+    <div id="cardWrapper">
+      <div id="income" class="card"><h2>Total Income</h2></div>
+  
+      <div id="expense" class="card"><h2>Total Expenses</h2></div>
+  
+      <div id="balance" class="card"><h2>Balance</h2></div>
+    </div>
+    
+    <div id="transactionWrapper">
+      <div id="transaction" class="transactionCard">
+        <h2>Recent Transactions</h2>
+        <a href="ledger.html">VIEW ALL</a>
+        <table id="table">
+          <thead>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Time</th>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+  
+      <div id="enter" class="transactionCard">
+        <h2>Enter new transaction</h2>
+        <form>
+          <div class="inputItems">
+            <label>Title :</label>
+            <input type="text" name="title" id="title" required minlength="3" placeholder="Title"/>
+          </div>
+          <div class="inputItems">
+            <div style="margin-left: 0;padding-left: 0;">
+              <label>Type :</label>
+            </div>
+            <div>
+              <input type="radio" name="type" value="debit" />
+              <label>Debit</label>
+            </div>
+            <div>
+              <input type="radio" name="type" value="credit" />
+              <label for="credit">Credit</label>
+            </div>
+          </div>
+          <div class="inputItems">
+            <label>Amount :</label>
+            <input type="number" name="amount" id="amount" placeholder="Amount"/>
+          </div>
+          <div>
+            <input type="submit" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="dash.js"></script>
+  </body>
+</html>
