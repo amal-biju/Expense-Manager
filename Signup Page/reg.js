@@ -20,10 +20,11 @@ function register() {
     var payload = {
         name: name,
         email: email,
-        password: password
+        password: password,
+        transactions:[]
     }
     // console.log(payload);
-    array = JSON.parse(localStorage.getItem('users'));
+    array = JSON.parse(localStorage.getItem('users')) || [];
 
     var match = true;
 
